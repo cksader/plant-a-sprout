@@ -1,0 +1,11 @@
+PLANT A SPROUT — UPLOAD THIS WEBSITE
+
+For Netlify Drop: upload PLANT-A-SPROUT-UPLOAD.zip, or unzip and drop the plant-a-sprout-upload folder. index.html must be at the website root.
+
+To open offline: double-click index.html or the separate Plant a Sprout.html file. No build, npm, account or installation needed.
+
+This version contains 24 fictional example sprouts, randomly scattered with spacing and a clear winding path. Positions remain stable when you reload or filter. You can drag the garden and use the zoom controls to explore, especially on a narrow screen.
+
+All styles, font, cursor, illustrations and application code are inside index.html. FONT-LICENSE.txt covers the embedded Bodoni Moda font. No other runtime files are required.
+
+This is the offline/local version: participant plantings save in their own browser, not a shared online database. Uploading these files to a static host shares the website and its examples, but does not combine everyone's new uploads. Music discovery links require internet. Use “save my sprouts” to back up local contributions.
