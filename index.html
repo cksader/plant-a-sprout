@@ -58,7 +58,8 @@ async function dataBlob(data){
 async function save(sprout){
  if(!/^[0-9a-f-]{36}$/i.test(sprout.id))throw Error('Could not create the sprout identifier. Reload and try again.');
  if(!categories.includes(sprout.category))throw Error('Choose a memory category.');
- const row={id:sprout.id,created_at:new Date().toISOString(),flower_name:sprout.name,song_title:sprout.song,artist_name:sprout.artist,song_url:sprout.url||'',memory_text:sprout.memory||'',genre:'Other',memory_category:sprout.category,image_url:`${base}/storage/v1/object/public/drawings/${sprout.id}.png`,position_x:sprout.x,position_y:0,position_z:sprout.y,scale:1,rotation:0,approved:false};
+ // Let Postgres apply created_at=now(); a visitor's clock may differ from the server.
+ const row={id:sprout.id,flower_name:sprout.name,song_title:sprout.song,artist_name:sprout.artist,song_url:sprout.url||'',memory_text:sprout.memory||'',genre:'Other',memory_category:sprout.category,image_url:`${base}/storage/v1/object/public/drawings/${sprout.id}.png`,position_x:sprout.x,position_y:0,position_z:sprout.y,scale:1,rotation:0,approved:false};
  const blob=await dataBlob(sprout.image);
  await request(`/storage/v1/object/drawings/${sprout.id}.png`,{method:'POST',headers:{'Content-Type':'image/png','x-upsert':'false'},body:blob});
  try{await request('/rest/v1/flowers',{method:'POST',headers:{'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)});}catch(error){throw Error('The image uploaded, but the sprout record was not saved. '+error.message);}
